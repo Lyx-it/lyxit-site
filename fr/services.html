@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LYX IT | Services</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#0f172a', accent: '#3b82f6' },
+          boxShadow: {
+            soft: "0 10px 30px rgba(2, 6, 23, 0.10)",
+            glow: "0 0 0 1px rgba(59,130,246,0.25), 0 12px 40px rgba(59,130,246,0.18)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="icon" href="../assets/img/favicon.png" type="image/png">
+  <link rel="icon" sizes="32x32" href="../assets/img/favicon-32.png">
+</head>
+
+<body class="bg-white text-gray-800 overflow-x-hidden">
+
+<style>
+  /* Fond “tech” élégant */
+  .gridlines {
+    background-image:
+      linear-gradient(to right, rgba(15,23,42,.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15,23,42,.06) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: radial-gradient(circle at 30% 10%, black 0, transparent 60%);
+  }
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+  .shine {
+    background:
+      radial-gradient(600px 240px at 20% 0%, rgba(59,130,246,.30), transparent 55%),
+      radial-gradient(520px 280px at 85% 20%, rgba(255,255,255,.14), transparent 55%);
+  }
+
+  /* Hovers élégants (identiques à About) */
+  .hover-lift {
+    transition: transform .35s ease, box-shadow .35s ease;
+    will-change: transform, box-shadow;
+  }
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(15,23,42,.18);
+  }
+
+  .hover-glow {
+    transition: transform .35s ease, box-shadow .35s ease;
+    will-change: transform, box-shadow;
+  }
+  .hover-glow:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 0 0 1px rgba(59,130,246,.25),
+      0 18px 45px rgba(59,130,246,.22);
+  }
+
+  /* Hover “soft” pour petits blocs (évite l'effet trop agressif) */
+  .hover-soft {
+    transition: transform .30s ease, background-color .30s ease, border-color .30s ease, box-shadow .30s ease;
+    will-change: transform;
+  }
+  .hover-soft:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(15,23,42,.12);
+    border-color: rgba(59,130,246,.28);
+  }
+</style>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="flex items-center">
+      <img src="../assets/img/lyx-logo.png" alt="LYX IT" class="h-12 md:h-14 w-auto">
+      <span class="sr-only">LYX IT</span>
+    </a>
+
+    <nav class="hidden md:flex gap-6 text-sm text-gray-600 items-center">
+      <a href="index.html" class="hover:text-accent">Accueil</a>
+      <a href="services.html" class="font-semibold text-primary">Services</a>
+      <a href="about.html" class="hover:text-accent">À propos</a>
+      <a href="contact.html" class="hover:text-accent">Contact</a>
+      <span class="text-gray-400">FR | <a href="../en/index.html" class="hover:text-accent">EN</a></span>
+    </nav>
+
+    <!-- Social (desktop) -->
+    <div class="hidden md:flex items-center gap-3">
+      <!-- Remplace TON-LIEN par tes URLs -->
+      <a href="https://www.linkedin.com/company/TON-LIEN" target="_blank" rel="noopener"
+         class="h-9 w-9 flex items-center justify-center rounded-xl border border-slate-200 hover:border-accent hover:bg-slate-50 transition"
+         aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="currentColor" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.368-1.85 3.6 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM6.814 20.452H3.861V9h2.953v11.452z"/>
+        </svg>
+      </a>
+
+      <a href="https://www.facebook.com/TON-LIEN" target="_blank" rel="noopener"
+         class="h-9 w-9 flex items-center justify-center rounded-xl border border-slate-200 hover:border-accent hover:bg-slate-50 transition"
+         aria-label="Facebook">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="currentColor" aria-hidden="true">
+          <path d="M22 12a10 10 0 1 0-11.563 9.874v-6.987H7.898V12h2.539V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.887h-2.33v6.987A10.002 10.002 0 0 0 22 12z"/>
+        </svg>
+      </a>
+    </div>
+
+    <button id="menuBtn" class="md:hidden text-primary" aria-label="Ouvrir le menu">☰</button>
+  </div>
+
+  <div id="mobileMenu" class="hidden md:hidden px-6 pb-4">
+    <a class="block py-2" href="index.html">Accueil</a>
+    <a class="block py-2 font-semibold" href="services.html">Services</a>
+    <a class="block py-2" href="about.html">À propos</a>
+    <a class="block py-2" href="contact.html">Contact</a>
+
+    <!-- Social (mobile) -->
+    <div class="mt-3 flex items-center gap-3">
+      <a href="https://www.linkedin.com/company/TON-LIEN" target="_blank" rel="noopener"
+         class="h-10 w-10 flex items-center justify-center rounded-xl border border-slate-200 hover:border-accent hover:bg-slate-50 transition"
+         aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="currentColor" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.368-1.85 3.6 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM6.814 20.452H3.861V9h2.953v11.452z"/>
+        </svg>
+      </a>
+
+      <a href="https://www.facebook.com/TON-LIEN" target="_blank" rel="noopener"
+         class="h-10 w-10 flex items-center justify-center rounded-xl border border-slate-200 hover:border-accent hover:bg-slate-50 transition"
+         aria-label="Facebook">
+        <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="currentColor" aria-hidden="true">
+          <path d="M22 12a10 10 0 1 0-11.563 9.874v-6.987H7.898V12h2.539V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.887h-2.33v6.987A10.002 10.002 0 0 0 22 12z"/>
+        </svg>
+      </a>
+    </div>
+
+    <span class="block py-2 text-gray-400">FR | <a href="../en/index.html" class="hover:text-accent">EN</a></span>
+  </div>
+</header>
+
+<!-- HERO (premium) -->
+<section class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-primary via-slate-950 to-primary"></div>
+  <div class="absolute inset-0 shine"></div>
+  <div class="absolute inset-0 gridlines opacity-70"></div>
+  <div class="absolute inset-0 noise opacity-40"></div>
+
+  <div class="absolute -top-28 -right-28 h-[520px] w-[520px] rounded-full bg-accent/25 blur-3xl"></div>
+  <div class="absolute -bottom-40 -left-40 h-[520px] w-[520px] rounded-full bg-white/10 blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 py-20 md:py-24">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-white">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold">
+          IT Support • Networks • Maintenance • Equipment
+        </div>
+
+        <h1 class="mt-5 text-4xl md:text-6xl font-extrabold leading-tight">
+          Services IT pensés pour être <span class="text-white/90">simples</span>, <span class="text-white/90">rapides</span> et <span class="text-white/90">fiables</span>.
+        </h1>
+
+        <p class="mt-5 text-white/80 text-lg md:text-xl max-w-xl">
+          Un seul interlocuteur, une exécution propre, et des résultats mesurables pour votre PME.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href="contact.html" class="bg-accent text-white px-7 py-4 rounded-xl font-semibold hover:opacity-95 text-center shadow-glow">
+            Demander un devis
+          </a>
+          <a href="#catalogue" class="bg-white/10 border border-white/20 px-7 py-4 rounded-xl font-semibold hover:bg-white/15 text-center">
+            Explorer les services
+          </a>
+        </div>
+
+        <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+          <div class="rounded-xl bg-white/8 border border-white/12 p-4 hover-lift">
+            <div class="text-white font-bold">SLA</div>
+            <div class="text-white/70 mt-1">Options de support</div>
+          </div>
+          <div class="rounded-xl bg-white/8 border border-white/12 p-4 hover-lift">
+            <div class="text-white font-bold">Sécurité</div>
+            <div class="text-white/70 mt-1">Bonnes pratiques</div>
+          </div>
+          <div class="rounded-xl bg-white/8 border border-white/12 p-4 hover-lift">
+            <div class="text-white font-bold">Wi-Fi Pro</div>
+            <div class="text-white/70 mt-1">Couverture optimisée</div>
+          </div>
+          <div class="rounded-xl bg-white/8 border border-white/12 p-4 hover-lift">
+            <div class="text-white font-bold">Backup</div>
+            <div class="text-white/70 mt-1">Continuité</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panneau “signature” -->
+      <div class="rounded-3xl bg-white/8 border border-white/14 p-7 md:p-8 text-white shadow-soft hover-glow">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-bold">Approche LYX IT</h2>
+            <p class="mt-2 text-white/75 text-sm">
+              Une méthode courte, structurée, et orientée résultat.
+            </p>
+          </div>
+          <div class="h-12 w-12 rounded-2xl bg-accent/15 border border-white/10 flex items-center justify-center">
+            <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z"></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="mt-6 space-y-3">
+          <div class="rounded-2xl bg-white/6 border border-white/10 p-5 hover-lift">
+            <div class="text-xs font-bold text-white/80">01</div>
+            <div class="mt-1 font-bold">Audit express</div>
+            <div class="mt-1 text-white/70 text-sm">Besoin + contexte + priorités.</div>
+          </div>
+          <div class="rounded-2xl bg-white/6 border border-white/10 p-5 hover-lift">
+            <div class="text-xs font-bold text-white/80">02</div>
+            <div class="mt-1 font-bold">Plan d’action</div>
+            <div class="mt-1 text-white/70 text-sm">Solution claire + estimation.</div>
+          </div>
+          <div class="rounded-2xl bg-white/6 border border-white/10 p-5 hover-lift">
+            <div class="text-xs font-bold text-white/80">03</div>
+            <div class="mt-1 font-bold">Exécution propre</div>
+            <div class="mt-1 text-white/70 text-sm">Mise en place + tests + suivi.</div>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <a href="contact.html" class="inline-flex items-center justify-center w-full bg-white text-primary px-6 py-3 rounded-xl font-semibold hover:opacity-95">
+            Planifier un appel
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOGUE -->
+<section id="catalogue" class="relative">
+  <div class="max-w-7xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-primary">Catalogue de services</h2>
+      <p class="mt-3 text-gray-600 max-w-2xl mx-auto">
+        Chaque service peut être activé seul ou combiné en pack.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- Sidebar -->
+      <aside class="lg:col-span-4">
+        <div class="sticky top-28 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover-lift">
+          <div class="text-sm font-bold text-primary">Accès rapide</div>
+          <div class="mt-4 space-y-2 text-sm">
+            <a href="#support" class="block rounded-xl px-4 py-3 border border-slate-200 hover-soft bg-white">
+              Support informatique
+            </a>
+            <a href="#equip" class="block rounded-xl px-4 py-3 border border-slate-200 hover-soft bg-white">
+              Fourniture IT
+            </a>
+            <a href="#managed" class="block rounded-xl px-4 py-3 border border-slate-200 hover-soft bg-white">
+              Maintenance & infogérance
+            </a>
+            <a href="#network" class="block rounded-xl px-4 py-3 border border-slate-200 hover-soft bg-white">
+              Réseaux & sécurité
+            </a>
+          </div>
+
+          <div class="mt-6 rounded-2xl bg-primary text-white p-5 hover-glow">
+            <div class="font-bold">Besoin d’aide maintenant ?</div>
+            <div class="mt-1 text-white/75 text-sm">Décrivez le problème, réponse rapide.</div>
+            <a href="contact.html" class="mt-4 inline-flex w-full items-center justify-center bg-white text-primary px-5 py-3 rounded-xl font-semibold hover:opacity-95">
+              Contacter LYX IT
+            </a>
+          </div>
+
+          <!-- Social sidebar -->
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <a href="https://www.linkedin.com/company/TON-LIEN" target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center rounded-xl border border-slate-200 px-4 py-3 hover-soft bg-white"
+               aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="currentColor" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.368-1.85 3.6 0 4.268 2.37 4.268 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM6.814 20.452H3.861V9h2.953v11.452z"/>
+              </svg>
+              <span class="ml-2 text-sm font-semibold text-primary">LinkedIn</span>
+            </a>
+
+            <a href="https://www.facebook.com/TON-LIEN" target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center rounded-xl border border-slate-200 px-4 py-3 hover-soft bg-white"
+               aria-label="Facebook">
+              <svg viewBox="0 0 24 24" class="h-5 w-5 text-primary" fill="currentColor" aria-hidden="true">
+                <path d="M22 12a10 10 0 1 0-11.563 9.874v-6.987H7.898V12h2.539V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.887h-2.33v6.987A10.002 10.002 0 0 0 22 12z"/>
+              </svg>
+              <span class="ml-2 text-sm font-semibold text-primary">Facebook</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <div class="lg:col-span-8 space-y-6">
+        <!-- Support -->
+        <article id="support" class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover-lift">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-2xl font-extrabold text-primary">Support informatique</h3>
+              <p class="mt-2 text-gray-600">
+                Support réactif, diagnostic, résolution et accompagnement utilisateurs.
+              </p>
+            </div>
+            <div class="h-12 w-12 rounded-2xl bg-accent/10 flex items-center justify-center">
+              <svg class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M19.1 4.9l-4.2 4.2M9.1 14.9l-4.2 4.2"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 hover-soft">
+              <div class="font-bold text-primary">Interventions</div>
+              <ul class="mt-3 space-y-2 text-sm text-gray-700">
+                <li>• À distance / sur site</li>
+                <li>• Incidents & demandes</li>
+                <li>• Installation / configuration</li>
+              </ul>
+            </div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 hover-soft">
+              <div class="font-bold text-primary">Optionnel</div>
+              <ul class="mt-3 space-y-2 text-sm text-gray-700">
+                <li>• Documentation</li>
+                <li>• Procédures internes</li>
+                <li>• Sensibilisation sécurité</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a href="contact.html" class="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:opacity-95">
+              Demander une intervention
+            </a>
+            <a href="#packs" class="inline-flex items-center justify-center border border-slate-200 px-6 py-3 rounded-xl font-semibold hover:bg-slate-50">
+              Voir les packs
+            </a>
+          </div>
+        </article>
+
+        <!-- Equipment -->
+        <article id="equip" class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover-lift">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-2xl font-extrabold text-primary">Fourniture IT</h3>
+              <p class="mt-2 text-gray-600">
+                Choix du matériel, achat, installation et mise en service clé en main.
+              </p>
+            </div>
+            <div class="h-12 w-12 rounded-2xl bg-accent/10 flex items-center justify-center">
+              <svg class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="6" y="6" width="12" height="12" rx="2"></rect>
+                <rect x="9" y="9" width="6" height="6" rx="1"></rect>
+                <path d="M4 10h2M4 14h2M18 10h2M18 14h2M10 4v2M14 4v2M10 18v2M14 18v2"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-3 gap-4">
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 hover-soft">
+              <div class="font-bold text-primary">Postes</div>
+              <div class="mt-2 text-sm text-gray-700">PC, laptops, écrans, imprimantes.</div>
+            </div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 hover-soft">
+              <div class="font-bold text-primary">Serveurs</div>
+              <div class="mt-2 text-sm text-gray-700">NAS, virtualisation, sauvegarde.</div>
+            </div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 hover-soft">
+              <div class="font-bold text-primary">Réseau</div>
+              <div class="mt-2 text-sm text-gray-700">Switch, firewall, Wi-Fi pro.</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Managed -->
+        <article id="managed" class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover-lift">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-2xl font-extrabold text-primary">Maintenance & infogérance</h3>
+              <p class="mt-2 text-gray-600">
+                Supervision, mises à jour, sécurité et continuité : une IT stable.
+              </p>
+            </div>
+            <div class="h-12 w-12 rounded-2xl bg-accent/10 flex items-center justify-center">
+              <svg class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="M9 12l2 2 4-4"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 hover-soft">
+              <div class="font-bold text-primary">Inclus</div>
+              <ul class="mt-3 space-y-2 text-sm text-gray-700">
+                <li>• Monitoring & alerting</li>
+                <li>• Patch management</li>
+                <li>• Antivirus / hardening</li>
+                <li>• Rapports (option)</li>
+              </ul>
+            </div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 hover-soft">
+              <div class="font-bold text-primary">SLA</div>
+              <ul class="mt-3 space-y-2 text-sm text-gray-700">
+                <li>• Priorité de traitement</li>
+                <li>• Plages de support</li>
+                <li>• Engagements de délai</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Network -->
+        <article id="network" class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover-lift">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-2xl font-extrabold text-primary">Réseaux & sécurité</h3>
+              <p class="mt-2 text-gray-600">
+                Wi-Fi pro, segmentation, firewall, VPN et sauvegardes : une base solide.
+              </p>
+            </div>
+            <div class="h-12 w-12 rounded-2xl bg-accent/10 flex items-center justify-center">
+              <svg class="h-6 w-6 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 9a16 16 0 0 1 20 0"></path>
+                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                <path d="M8.5 16.05a6 6 0 0 1 7 0"></path>
+                <path d="M12 20h0"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-3 gap-4">
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 hover-soft">
+              <div class="font-bold text-primary">Wi-Fi</div>
+              <div class="mt-2 text-sm text-gray-700">Étude couverture, installation, optimisation.</div>
+            </div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 hover-soft">
+              <div class="font-bold text-primary">Sécurité</div>
+              <div class="mt-2 text-sm text-gray-700">Firewall, VPN, MFA, bonnes pratiques.</div>
+            </div>
+            <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5 hover-soft">
+              <div class="font-bold text-primary">Backup</div>
+              <div class="mt-2 text-sm text-gray-700">Stratégie, tests de restauration, continuité.</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKS -->
+<section id="packs" class="bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-primary">Packs</h2>
+      <p class="mt-3 text-gray-600 max-w-2xl mx-auto">
+        Un cadre simple, ensuite on ajuste selon votre parc et vos besoins.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+      <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm hover-lift">
+        <div class="text-xs font-semibold text-accent mb-2">Essentiel</div>
+        <h3 class="text-xl font-bold text-primary">Support à la demande</h3>
+        <p class="mt-2 text-gray-600 text-sm">Parfait pour démarrer, sans engagement long.</p>
+        <ul class="mt-5 space-y-2 text-sm text-gray-700">
+          <li>• Assistance utilisateurs</li>
+          <li>• Dépannage / mise en place</li>
+          <li>• Conseils & bonnes pratiques</li>
+        </ul>
+      </div>
+
+      <div class="bg-white border-2 border-accent rounded-3xl p-8 shadow-glow relative hover-glow">
+        <div class="absolute -top-3 right-6 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">
+          Recommandé
+        </div>
+        <div class="text-xs font-semibold text-accent mb-2">Pro</div>
+        <h3 class="text-xl font-bold text-primary">Maintenance + supervision</h3>
+        <p class="mt-2 text-gray-600 text-sm">Stabilité, sécurité, et moins d’imprévus.</p>
+        <ul class="mt-5 space-y-2 text-sm text-gray-700">
+          <li>• Monitoring & alerting</li>
+          <li>• Mises à jour / sécurité</li>
+          <li>• Priorité de traitement</li>
+        </ul>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm hover-lift">
+        <div class="text-xs font-semibold text-accent mb-2">Entreprise</div>
+        <h3 class="text-xl font-bold text-primary">Infogérance</h3>
+        <p class="mt-2 text-gray-600 text-sm">Accompagnement complet et pilotage IT.</p>
+        <ul class="mt-5 space-y-2 text-sm text-gray-700">
+          <li>• Gestion parc & réseau</li>
+          <li>• Sécurité + sauvegardes</li>
+          <li>• Plan d’évolution</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="contact.html" class="inline-flex items-center justify-center bg-primary text-white px-7 py-4 rounded-xl font-semibold hover:opacity-95">
+        Obtenir une proposition
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="bg-primary text-white">
+  <div class="max-w-7xl mx-auto px-6 py-16 text-center">
+    <h2 class="text-3xl font-extrabold mb-4">Passez à une IT plus stable</h2>
+    <p class="text-white/80 mb-8">Décrivez votre contexte, je vous recontacte rapidement.</p>
+    <a href="contact.html" class="inline-flex items-center justify-center bg-white text-primary px-7 py-4 rounded-xl font-semibold hover:opacity-95">
+      Contacter LYX IT
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t">
+  <div class="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-500 text-center">
+    © 2025 LYX IT — Support & Réseaux Informatiques
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+</script>
+
+</body>
+</html>
